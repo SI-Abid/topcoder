@@ -1,0 +1,62 @@
+PROBLEM STATEMENT
+
+Several judges submit scores as part of a competition.
+It is known that some judges tend to score highly, and some tend to score lower.
+Therefore, the organizers of the competition came up with a specific scoring formula.
+This formula is described below and your task is to implement it.
+
+
+Given a sequence of scores given by the judges, we will call the highest third of them (rounded down if necessary) the "high scores", the lowest third (again, rounded down if necessary) the "low scores", and all the other scores are called "middle scores".
+We then take an average (i.e., mean) high score, an average low score, and an average middle score.
+The final score is then computed as the sum of those three values.
+
+Given the vector <int> individualScores containing individual scores submitted by the judges, return the final score.
+
+DEFINITION
+Class:ScoringJudges
+Method:overallScore
+Parameters:vector <int>
+Returns:double
+Method signature:double overallScore(vector <int> individualScores)
+
+
+NOTES
+-If multiple judges submit the same score, it is possible that different groups of scores will contain individual scores with the same value. See the Examples for further clarification.
+-The return value must have an absolute or a relative error at most 1e-9.
+
+
+CONSTRAINTS
+-individualScores will contain between 3 and 50 elements, inclusive.
+-Each element of individualScores will be between 0 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+{60, 30, 20, 40, 10, 50}
+
+Returns: 105.0
+
+
+The high scores are 50 and 60, the low scores are 10 and 20, and the middle scores are 30 and 40.
+
+
+The average high score is (50 + 60) / 2 = 55, the average low score is 15, and the average middle score is 35.
+
+
+The final score is 55 + 15 + 35.
+
+
+1)
+{47, 47, 47, 47, 47, 47, 47}
+
+Returns: 141.0
+
+All seven judges gave the same score. As 7/3 (rounded down) is 2, we take two of these as the high scores, two of them as the low scores, and the remaining three are the middle scores. Clearly, each group of scores has the mean 47, so the final score is 47 + 47 + 47.
+
+2)
+{1, 1, 1, 3, 3, 4, 4, 4}
+
+Returns: 7.75
+
+The average high score is (4 + 4) / 2, the average low score is (1 + 1) / 2, and the average middle score is (1 + 3 + 3 + 4) / 4.
