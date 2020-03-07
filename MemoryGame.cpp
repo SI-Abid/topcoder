@@ -1,23 +1,12 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-class RectangularGrid 
+class MemoryGame 
 {
     public:
-    long long countRectangles( int width, int height ) 
+    long long countSteps( int N, int seed ) 
     {
-        long long count=0;
-        for(int x=1; x<=width; x++)
-        {
-			for(int y=1; y<=height; y++)
-			{
-				if(x!=y)
-				{
-					count += (width-x+1) * (height-y+1);
-				}
-			}
-		}
-		return count;
+        //start
     }
 };
 
@@ -99,141 +88,141 @@ namespace moj_harness {
 	int run_test_case(int casenum__) {
 		switch (casenum__) {
 		case 0: {
-			int width                 = 3;
-			int height                = 3;
-			long long expected__      = 22;
+			int N                     = 1;
+			int seed                  = 47;
+			long long expected__      = 1;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 1: {
-			int width                 = 5;
-			int height                = 2;
-			long long expected__      = 31;
+			int N                     = 2;
+			int seed                  = 47474747;
+			long long expected__      = 2;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 2: {
-			int width                 = 10;
-			int height                = 10;
-			long long expected__      = 2640;
+			int N                     = 2;
+			int seed                  = 42;
+			long long expected__      = 3;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 3: {
-			int width                 = 1;
-			int height                = 1;
-			long long expected__      = 0;
+			int N                     = 7;
+			int seed                  = 123456;
+			long long expected__      = 12;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 		case 4: {
-			int width                 = 592;
-			int height                = 964;
-			long long expected__      = 81508708664LL;
+			int N                     = 100;
+			int seed                  = 100;
+			long long expected__      = 166;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}
 
 		// custom cases
 
 /*      case 5: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 6: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 7: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 8: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 9: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 10: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 11: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 12: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 13: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 /*      case 14: {
-			int width                 = ;
-			int height                = ;
+			int N                     = ;
+			int seed                  = ;
 			long long expected__      = ;
 
 			std::clock_t start__      = std::clock();
-			long long received__      = RectangularGrid().countRectangles(width, height);
+			long long received__      = MemoryGame().countSteps(N, seed);
 			return verify_case(casenum__, expected__, received__, clock()-start__);
 		}*/
 		default:
@@ -241,6 +230,7 @@ namespace moj_harness {
 		}
 	}
 }
+
 
 #include <cstdlib>
 int main(int argc, char *argv[]) {

@@ -1,0 +1,146 @@
+PROBLEM STATEMENT
+
+Alex is playing a memory game.
+The game is played with 2*N cards.
+The cards have numbers: For each x between 0 and N-1, inclusive, there are two cards with the number x.
+Cards with the same number form a pair, and the goal of the game is to find all pairs.
+
+
+Initially, the cards are randomly shuffled and placed face down onto locations numbered from 0 to 2N-1.
+The game is then played in turns.
+In each turn, the player gets to:
+
+
+Choose a location and turn over the card to see the number on it.
+Choose another location and turn over the card to see the number on it.
+If the two cards form a pair, they are removed from the game. Their locations remain empty (and cannot be chosen in the following turns).
+If the two cards have distinct numbers, the player turns them face down again.
+
+
+Alex has a photographic memory, so once he sees the number on a card, he can remember it correctly.
+He is using a specific strategy to play the memory game.
+His strategy looks as follows:
+
+
+If there is a value x such that Alex has already seen the locations of both cards with value x, he chooses those two locations for the next turn. (There is always at most one such value x.)
+Otherwise, the first location he chooses is the smallest-numbered location he hasn't chosen before. Now there are two options:
+
+If the location contains a card whose pair Alex already saw, the second location he chooses for the turn is the location that contains the matching pair to the first card he turned over this turn.
+Otherwise, the second location he chooses is the smallest-numbered location he hasn't chosen before.
+
+
+
+
+You are given the int N that specifies the number of cards and the int seed that specifies how they are shuffled.
+Compute and return the number of turns Alex will take until he wins the memory game by finding all matching pairs of cards.
+
+
+Use the following pseudocode to shuffle the cards. (After executing the code, location[i] is the number written on the card that is placed on location i.)
+
+
+for i = 0 to 2*N-1:
+    location[i] = i div 2
+
+state = seed
+for i = 2*N-1 downto 1:
+    j = state mod (i+1)
+    swap( location[i], location[j] )
+    state = (state * 1103515245 + 12345) modulo 2^31
+
+
+DEFINITION
+Class:MemoryGame
+Method:countSteps
+Parameters:int, int
+Returns:long long
+Method signature:long long countSteps(int N, int seed)
+
+
+NOTES
+-Alex does not attempt to do any deductions, he only uses the information he has explicitly seen.
+-Watch out for integer overflow when implementing the pseudocode. In particular, make sure to use a 64-bit integer variable for state.
+
+
+CONSTRAINTS
+-N will be between 1 and 1,000,000, inclusive.
+-seed will be between 0 and 2^31 - 1, inclusive.
+
+
+EXAMPLES
+
+0)
+1
+47
+
+Returns: 1
+
+There are two cards, both with the number 0. In the first and only turn of the game, Alex uses the rule "select the smallest unseen location" twice, reveals a matching pair and wins the game.
+
+1)
+2
+47474747
+
+Returns: 2
+
+
+The pseudocode does the following:
+
+
+swap location[3] and location[3], new state is 81038168
+swap location[2] and location[2], new state is 1862554801
+swap location[1] and location[1], new state is 143404438
+location[] = {0, 0, 1, 1}
+
+
+Thus, Alex will win the game in two turns. (In the first turn he will select locations 0 and 1, in the second turn he will select locations 2 and 3.)
+
+
+
+2)
+2
+42
+
+Returns: 3
+
+The swaps performed by the pseudocode are between indices (3, 2), (2, 0), and (1, 0). The generated array is location[] = {0, 1, 0, 1}. Alex will play the game as follows:
+
+Turn 1: Uncovers locations 0 and 1. No match.
+Turn 2: Uncovers location 2, sees card with value 0. That card was previously seen at location 0, so he chooses location 0 as the second location for the turn. Match: value 0.
+Turn 3: Alex has not seen any other pair yet, so he uncovers the first unseen location: location 3. He sees a card with value 1, uncovers its previously-seen pair. Match: value 1.
+
+
+
+3)
+7
+123456
+
+Returns: 12
+
+
+location[] = { 6, 1, 3, 5, 4, 3, 0, 5, 2, 6, 4, 1, 0, 2 }
+
+
+Turns of Alex's game:
+
+
+Uncovers locations 0 and 1 (values 6, 1).
+Uncovers locations 2 and 3 (values 3, 5).
+Uncovers locations 4 and 5 (values 4, 3).
+Alex now has seen both cards with value 3, so he picks those up: uncovers locations 2 and 5, finds matching pair (value 3).
+Uncovers locations 6 and 7 (values 0, 5).
+Uncovers locations 3 and 7, collects the known matching pair (value 5).
+Uncovers locations 8 and 9 (values 2, 6).
+Uncovers locations 0 and 9, collects the known matching pair (value 6).
+Uncovers location 10 (value 4), then uncovers location 4 and collects the matching pair (value 4).
+Uncovers location 11 (value 1), then uncovers location 1 and collects the matching pair (value 1).
+Uncovers location 12 (value 0), then uncovers location 6 and collects the matching pair (value 0).
+Uncovers location 13 (value 2), then uncovers location 8 and collects the matching pair (value 2).
+
+
+4)
+100
+100
+
+Returns: 166
+
+
